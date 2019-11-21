@@ -2,6 +2,7 @@ package com.e.topic4;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -45,7 +46,11 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String country = parent.getItemAtPosition(position).toString();
                 String capital = dictonary.get(country);
-                Toast.makeText(getApplicationContext(), capital, Toast.LENGTH_LONG).show();
+
+                Intent intent = new Intent(MainActivity.this, MessageActivity.class);
+                intent.putExtra("capital", capital);
+                startActivity(intent);
+
             }
         });
 
